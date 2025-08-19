@@ -171,6 +171,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # REST Framework ও JWT কনফিগারেশন
 REST_FRAMEWORK = {
+     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -180,6 +183,12 @@ REST_FRAMEWORK = {
     )
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
 
+
+CORS_URLS_REGEX = r'^/api.*'
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # or whatever port your frontend runs on
+    "http://127.0.0.1:3000",
+]
 
